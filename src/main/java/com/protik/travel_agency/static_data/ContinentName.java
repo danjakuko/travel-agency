@@ -1,6 +1,6 @@
 package com.protik.travel_agency.static_data;
 
-public enum Continent {
+public enum ContinentName {
     EUROPE,
     ASIA,
     SOUTH_AMERICA,
