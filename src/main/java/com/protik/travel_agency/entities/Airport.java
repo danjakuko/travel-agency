@@ -8,4 +8,6 @@ import lombok.Data;
 @Table(name = "airports")
 @Data
 public class Airport extends GenericEntity{
+    private String name;
+    
 }
