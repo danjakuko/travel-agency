@@ -24,21 +24,22 @@ public class PurchasedTourService {
         return purchasedTourRepository.findById(id).orElseThrow();
     }
 
-    public PurchasedTourRequest create(PurchasedTourRequest purchasedTourRequest) {
-         Tour tour = tourService.findById(purchasedTourRequest.getTourId());
-         PurchasedTour purchasedTour = new PurchasedTour();
-         purchasedTour.setTour(tour);
-         purchasedTour.setAdults(purchasedTourRequest.getNumberOfAdults());
-         purchasedTour.setChildren(purchasedTourRequest.getNumberOfChildren());
-         Double price = 0.0;
-         price = purchasedTourRequest.getNumberOfAdults() * tour.getAdultPrice();
-         price = price + purchasedTourRequest.getNumberOfChildren() * tour.getChildPrice();
-         purchasedTour.setAmount(price);
+    public PurchasedTour create(PurchasedTourRequest purchasedTourRequest) {
+        Tour tour = tourService.findById(purchasedTourRequest.getTourId());
+        PurchasedTour purchasedTour = new PurchasedTour();
+        purchasedTour.setTour(tour);
+        purchasedTour.setAdults(purchasedTourRequest.getNumberOfAdults());
+        purchasedTour.setChildren(purchasedTourRequest.getNumberOfChildren());
+        Double price;
+        price = purchasedTourRequest.getNumberOfAdults() * tour.getAdultPrice();
+        price = price + purchasedTourRequest.getNumberOfChildren() * tour.getChildPrice();
+        purchasedTour.setAmount(price);
+        return purchasedTourRepository.save(purchasedTour);
 
     }
 
     public PurchasedTour update(PurchasedTour purchasedTour) {
-
+        return null;
     }
 
 }

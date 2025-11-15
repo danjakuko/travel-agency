@@ -8,10 +8,10 @@ import lombok.Data;
 @Table(name = "users")
 @Data
 public class AppUser extends GenericEntity {
-@Column (unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     private String username;
     private String password;
     private boolean active;
-    @Enumerated (value = EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private Role role;
 }

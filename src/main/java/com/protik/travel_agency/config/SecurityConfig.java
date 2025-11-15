@@ -15,7 +15,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain configuration(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(request-> {
+        http.authorizeHttpRequests(request -> {
                     request.requestMatchers("/user/register").permitAll()
                             .requestMatchers("/").authenticated()
                             .anyRequest().permitAll();
@@ -26,10 +26,12 @@ public class SecurityConfig {
         return http.build();
 
     }
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     @SneakyThrows
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) {
