@@ -10,9 +10,9 @@ import lombok.Data;
 @Table(name = "cities")
 @Data
 public class City extends GenericEntity {
-private String name;
+    private String name;
 
-@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
 

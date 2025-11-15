@@ -7,10 +7,10 @@ import lombok.Data;
 @Table(name = "countries")
 @Data
 public class Country extends GenericEntity {
-  @Column(unique = true, nullable = false)
-private String name;
+    @Column(unique = true, nullable = false)
+    private String name;
 
-@ManyToOne
-@JoinColumn(name = "continent_id")
+    @ManyToOne
+    @JoinColumn(name = "continent_id")
     private Continent continent;
 }
