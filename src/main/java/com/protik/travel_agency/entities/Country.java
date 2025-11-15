@@ -13,5 +13,4 @@ private String name;
 @ManyToOne
 @JoinColumn(name = "continent_id")
     private Continent continent;
-
 }
