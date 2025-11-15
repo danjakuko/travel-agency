@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 public class Airport extends GenericEntity{
     private String name;
-    private String newName;
     @Enumerated(EnumType.STRING)
     private AirportStatus airportStatus;
     @ManyToOne
