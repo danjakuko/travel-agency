@@ -12,14 +12,14 @@ import java.util.List;
 @Service
 public class ContinentService {
     @Autowired
- private ContinentRepository continentRepository;
+    private ContinentRepository continentRepository;
 
     public List<Continent> findAll() {
         return continentRepository.findAll();
     }
 
     public Continent findById(String id) {
-        return continentRepository.findById(id).orElseThrow(()-> new RuntimeException("Continent does not exist."));
+        return continentRepository.findById(id).orElseThrow(() -> new RuntimeException("Continent does not exist."));
     }
 
     @PostConstruct
