@@ -1,7 +1,6 @@
 package com.protik.travel_agency.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -9,5 +8,7 @@ import lombok.Data;
 @Data
 public class Airport extends GenericEntity{
     private String name;
-    
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 }
