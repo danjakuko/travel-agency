@@ -1,10 +1,7 @@
 package com.protik.travel_agency.entities;
 
 import com.protik.travel_agency.static_data.HotelStandard;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -15,4 +12,7 @@ public class Hotel extends GenericEntity {
     private String description;
     @Enumerated(value = EnumType.STRING)
     private HotelStandard standard;
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 }
