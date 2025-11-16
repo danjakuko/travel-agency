@@ -5,6 +5,7 @@ import com.protik.travel_agency.entities.Country;
 import com.protik.travel_agency.models.CityRequest;
 import com.protik.travel_agency.models.CountryRequest;
 import com.protik.travel_agency.services.CityService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class CityController {
 
 
     @PutMapping("/update/{id}")
-    public City update(@PathVariable Long id, @RequestBody CityRequest cityRequest) {
+    public City update(@PathVariable Long id,@Valid @RequestBody CityRequest cityRequest) {
         return cityService.update(cityRequest, id);
     }
 

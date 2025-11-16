@@ -4,6 +4,7 @@ import com.protik.travel_agency.entities.Continent;
 import com.protik.travel_agency.entities.Country;
 import com.protik.travel_agency.models.CountryRequest;
 import com.protik.travel_agency.services.CountryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +27,12 @@ public class CountryController {
     }
 
     @PostMapping("/create")
-    public Country create(@RequestBody CountryRequest countryRequest) {
+    public Country create(@Valid @RequestBody CountryRequest countryRequest) {
         return countryService.create(countryRequest);
     }
 
     @PutMapping("/update/{id}")
-    public Country update(@PathVariable Long id, @RequestBody CountryRequest countryRequest) {
+    public Country update(@PathVariable Long id,@Valid @RequestBody CountryRequest countryRequest) {
         return countryService.update(countryRequest, id);
     }
 
