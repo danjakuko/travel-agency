@@ -142,4 +142,8 @@ public class TourService {
             return cb.and(predicates.toArray(new Predicate[predicates.size()]));
         };
     }
+
+    public void flush(Tour tour) {
+        tourRepository.save(tour);
+    }
 }

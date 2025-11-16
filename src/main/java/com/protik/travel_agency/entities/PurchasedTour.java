@@ -14,7 +14,7 @@ public class PurchasedTour extends GenericEntity {
     private Tour tour;
     private Integer adults;
     private Integer children;
-    private Double amount;
+    private Double totalAmount;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser appUser;
