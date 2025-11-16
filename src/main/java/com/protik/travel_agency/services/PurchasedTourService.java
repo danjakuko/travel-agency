@@ -9,6 +9,7 @@ import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -34,6 +35,7 @@ public class PurchasedTourService {
         purchasedTour.setTour(tour);
         purchasedTour.setAdults(purchasedTourRequest.getNumberOfAdults());
         purchasedTour.setChildren(purchasedTourRequest.getNumberOfChildren());
+        purchasedTour.setPurchaseDate(LocalDateTime.now());
         int numberOfSeatsRequest = purchasedTourRequest.getNumberOfAdults()+purchasedTourRequest.getNumberOfChildren();
         if (tour.getNumberOfSeats() < numberOfSeatsRequest) {
             throw new IllegalArgumentException("Not enough seats available for this tour.");
@@ -66,14 +68,20 @@ public class PurchasedTourService {
         double newTotalAmount = updatedRequest.getNumberOfAdults() * tour.getAdultPrice()
                 + updatedRequest.getNumberOfChildren() * tour.getChildPrice();
         existingPurchase.setTotalAmount(newTotalAmount);
+        existingPurchase.setPurchaseDate(LocalDateTime.now());
         return purchasedTourRepository.save(existingPurchase);
     }
     public List<PurchasedTour> findUsersPurchasedTours() {
         AppUser user = userService.getLoggedUser();
-        return purchasedTourRepository.findByAppUser(user);
+        return purchasedTourRepository.findByAppUserOrderByPurchaseDateDesc(user);
     }
     public List<PurchasedTour> findToursPurchasing(Long tourId) {
         return purchasedTourRepository.findByTour_Id(tourId);
+    }
+
+    public List<PurchasedTour> findLatest() {
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        return purchasedTourRepository.findAllByPurchaseDateAfter(yesterday);
     }
 }
 

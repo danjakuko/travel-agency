@@ -37,4 +37,8 @@ public class PurchasedTourController {
     public List<PurchasedTour> getByTour(@RequestParam Long tourId) {
         return purchasedTourService.findToursPurchasing(tourId);
     }
+    @GetMapping("/latest")
+    public List<PurchasedTour> getLatest() {
+        return purchasedTourService.findLatest();
+    }
 }
