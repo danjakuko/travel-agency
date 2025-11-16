@@ -10,6 +10,7 @@ import lombok.Data;
 public class Hotel extends GenericEntity {
     private String name;
     private String description;
+    public String address;
     @Enumerated(value = EnumType.STRING)
     private HotelStandard standard;
     @ManyToOne
