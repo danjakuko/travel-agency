@@ -69,4 +69,8 @@ public class TourController {
     public List<Tour> filter(@RequestBody TourSearch tourSearch) {
         return tourService.search(tourSearch);
     }
+    @PatchMapping("/cancel")
+    public Tour cancel(@RequestParam Long id) {
+        return tourService.cancel(id);
+    }
 }
