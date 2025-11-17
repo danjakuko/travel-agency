@@ -6,6 +6,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "purchased_tours")
 @Data
@@ -14,7 +16,8 @@ public class PurchasedTour extends GenericEntity {
     private Tour tour;
     private Integer adults;
     private Integer children;
-    private Double amount;
+    private Double totalAmount;
+    private LocalDateTime purchaseDate;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser appUser;

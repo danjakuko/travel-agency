@@ -1,8 +1,6 @@
 package com.protik.travel_agency.models;
 
 import com.protik.travel_agency.static_data.TourStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
 import lombok.Data;
 
 import java.time.LocalDate;
