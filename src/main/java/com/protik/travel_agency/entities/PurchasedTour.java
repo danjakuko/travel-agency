@@ -16,6 +16,6 @@ public class PurchasedTour extends GenericEntity {
     private Integer children;
     private Double amount;
     @ManyToOne
-    @JoinColumn(name  = "user_id")
+    @JoinColumn(name = "user_id")
     private AppUser appUser;
 }

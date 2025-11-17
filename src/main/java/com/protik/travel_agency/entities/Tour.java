@@ -1,5 +1,6 @@
 package com.protik.travel_agency.entities;
 
+import com.protik.travel_agency.static_data.TourStatus;
 import com.protik.travel_agency.static_data.TourType;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -20,11 +21,15 @@ public class Tour extends GenericEntity {
     private Airport toAirport;
     @ManyToOne
     private Hotel toHotel;
+    private String name;
+    private String description;
     private LocalDate departureDate;
     private LocalDate arrivalDate;
     private Integer numberOfDays;
     @Enumerated(value = EnumType.STRING)
     private TourType tourType;
+    @Enumerated(value = EnumType.STRING)
+    private TourStatus tourStatus;
     private Double adultPrice;
     private Double childPrice;
     private boolean promoted;
